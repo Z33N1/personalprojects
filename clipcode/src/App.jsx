@@ -1,27 +1,17 @@
-import { useState } from "react";
-import CodeEditor from "./components/CodeEditor";
+import { useNavigate } from "react-router-dom";
 
 export default function App() {
-  const [code, setCode] = useState("// Write some code here");
-  const [language, setLanguage] = useState("javascript");
+  const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-cyan-500 to-blue-800 text-white flex flex-col items-center gap-6 p-8">
-      <h1 className="text-4xl font-bold">&lt;/&gt; Clipcode</h1>
-
-      <select
-        value={language}
-        onChange={(e) => setLanguage(e.target.value)}
-        className="text-black px-4 py-2 rounded-lg"
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-cyan-500 to-blue-800 text-white p-6">
+      <h1 className="text-5xl font-bold mb-4">&lt;/&gt; Clipcode</h1>
+      <button
+        onClick={() => navigate("/create")}
+        className="bg-white text-black px-6 py-3 rounded-xl shadow hover:scale-105 transition"
       >
-        <option value="javascript">JavaScript</option>
-        <option value="python">Python</option>
-        <option value="html">HTML</option>
-        <option value="cpp">C++</option>
-        <option value="json">JSON</option>
-      </select>
-
-      <CodeEditor code={code} setCode={setCode} language={language} />
+        Create Paste
+      </button>
     </div>
   );
 }
